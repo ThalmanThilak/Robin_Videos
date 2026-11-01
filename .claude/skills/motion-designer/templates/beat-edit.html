@@ -1,0 +1,116 @@
+<!doctype html>
+<!--
+  beat-edit.html — motion kit for music-driven edits (see references/beat-edit.md).
+  It gives you the FORMAT (beat-locked shots, drop, pulse/shake/whip, word slams, strobe, grain) — not a script.
+  Every video writes its own SHOTS list: what is on screen, and when, is decided per idea.
+  Next to it in <root>/source/: beats.js (scripts/beat_map.py), the song, and the video's images/SVGs.
+  Contract with render.py: ?ar=9x16, window.DUR, window.seek(t), window.ready. Times snap to 1/60 s so tmix never
+  blends two shots.
+-->
+<html><head><meta charset="utf-8"><title>beat edit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;color:#fff}
+canvas{position:absolute;inset:0}
+#words{position:absolute;inset:0;display:none;pointer-events:none}
+.w{position:absolute;left:-60px;right:-60px;text-align:center;font-family:Anton,Impact,sans-serif;text-transform:uppercase;line-height:.88;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.6)}
+#grain{position:absolute;inset:0;pointer-events:none;opacity:.10;mix-blend-mode:overlay}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+</style></head>
+<body><div id="stage">
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div id="words"><div class="w" id="wt"></div><div class="w" id="wb"></div></div>
+<canvas id="fx" width="1080" height="1920"></canvas>
+<canvas id="grain" width="540" height="960"></canvas>
+<div id="flash"></div>
+</div>
+<script src="beats.js"></script>
+<script>
+// =====================================================================================================================
+// CFG — per video
+// =====================================================================================================================
+const CFG={
+  pal:['#07080a','#1d4ed8','#facc15','#22c55e','#f5f5f4'],   // backgrounds rotate through these (take them from the subject)
+  accent:'#facc15',                // colour of the punch word
+  hero:null,                       // the subject's hero image (vector logo / product / object). Rasterised once, crisp.
+  images:[],                       // the video's other images (photos, icons, frames) for orbit / pop / photo / strobe
+  particle:null,                   // image used for bursts & rain (null → glowing dots)
+};
+// SHOTS: [when, visual, TOP words, BOTTOM words (accent)] — when = seconds or 'hit:N' (Nth bass hit in beats.js).
+// One shot per hit after the drop. Write them for THIS idea; this list is only an example.
+const SHOTS_SRC=[
+  [0,'buildup'],
+  ['drop','flip'],['hit+1','burst'],
+  ['hit+2','orbit','FIRST','WORD'],['hit+3','spin','SECOND'],['hit+4','pop','THIRD','WORD'],['hit+5','photo','FOURTH'],
+  ['hit+6','strobe'],['hit+8','rain','FIFTH','WORD'],['hit+9','split','SIXTH'],
+  ['end-3','slam'],['end-1.2','strobe'],
+];
+// =====================================================================================================================
+
+const W=1080,H=1920,clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),lerp=(a,b,t)=>a+(b-a)*t,seg=(t,a,b)=>clamp((t-a)/(b-a));
+const E={o3:t=>1-Math.pow(1-t,3),o5:t=>1-Math.pow(1-t,5),i3:t=>t*t*t,oB:(t,s=1.7)=>1+(s+1)*Math.pow(t-1,3)+s*Math.pow(t-1,2)};
+const hash=n=>{const x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+const $=id=>document.getElementById(id);
+const bg=$('bg').getContext('2d'),fx=$('fx').getContext('2d'),gr=$('grain').getContext('2d');
+const q=v=>Math.round(v*60)/60;
+const B=window.BEATS||{dur:30,hits:[],drop:8,quiet:[]};
+const HITS=B.hits.map(q),DROP=q(B.drop);
+const END=q((B.quiet.find(r=>r[0]>DROP+5)||[B.dur])[0]);      // end of the music (a cut to silence, or the track end)
+const DUR=q(B.dur);window.DUR=DUR;window.MARK={DROP,END};
+function pulse(t,tau=.13){let p=0;for(const h of HITS){if(h>t)break;p=Math.max(p,Math.exp(-(t-h)/tau))}return p}
+function resolve(w){if(typeof w==='number')return q(w);if(w==='drop')return DROP;
+  let m=w.match(/^hit:(\d+)$/);if(m)return HITS[+m[1]];m=w.match(/^hit\+(\d+)$/);if(m){const i=HITS.findIndex(h=>h>=DROP);return HITS[i+ +m[1]]??DUR}
+  m=w.match(/^end-([\d.]+)$/);if(m)return q(END-+m[1]);return q(+w)}
+
+// ---------------- images (rasterised once at high resolution → crisp at any size)
+const IMG={};function img(src){if(!IMG[src]){const i=new Image();i.src=src;IMG[src]=i}return IMG[src]}
+const RAS={};function ras(src){if(!src)return null;if(RAS[src])return RAS[src];const i=img(src);if(!i.complete||!i.naturalWidth)return null;const w=1600,h=Math.round(w*i.naturalHeight/i.naturalWidth);const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(i,0,0,w,h);return RAS[src]=c}
+function draw(ctx,src,cx,cy,w,rot=0,flip=1,a=1){const r=ras(src);if(!r)return;ctx.save();ctx.globalAlpha=a;ctx.translate(cx,cy);ctx.rotate(rot);ctx.scale(flip,1);ctx.drawImage(r,-w/2,-w*r.height/r.width/2,w,w*r.height/r.width);ctx.restore()}
+function pick(k){const L=CFG.images.length?CFG.images:(CFG.hero?[CFG.hero]:[]);return L[k%Math.max(1,L.length)]}
+function particle(ctx,x,y,s,rot){if(CFG.particle)return draw(ctx,CFG.particle,x,y,s,rot);if(!(s>1))return;const g=ctx.createRadialGradient(x,y,0,x,y,s);g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(.4,CFG.accent);g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,s,0,7);ctx.fill()}
+
+// ---------------- backgrounds + the visual vocabulary (each: u = s since the shot began, t = absolute, k = shot index)
+function back(k,t){const c=CFG.pal[k%CFG.pal.length];bg.fillStyle=c;bg.fillRect(0,0,W,H);const g=bg.createRadialGradient(540,900,0,540,900,1100);g.addColorStop(0,'rgba(255,255,255,.22)');g.addColorStop(1,'rgba(0,0,0,0)');bg.fillStyle=g;bg.fillRect(0,0,W,H);
+  bg.save();bg.globalCompositeOperation='overlay';for(let i=0;i<16;i++){const a=i/16*6.283+t*.9,w=.045;bg.fillStyle=i%2?'rgba(255,255,255,.08)':'rgba(0,0,0,.08)';bg.beginPath();bg.moveTo(540,900);bg.lineTo(540+Math.cos(a-w)*1500,900+Math.sin(a-w)*1500);bg.lineTo(540+Math.cos(a+w)*1500,900+Math.sin(a+w)*1500);bg.fill()}bg.restore()}
+const VIS={
+ buildup:(u,t,k)=>{bg.fillStyle='#000';bg.fillRect(0,0,W,H);const p=seg(t,0,DROP);const g=bg.createRadialGradient(540,900,0,540,900,300+700*p);g.addColorStop(0,`rgba(255,255,255,${.08+.25*p})`);g.addColorStop(1,'rgba(0,0,0,0)');bg.fillStyle=g;bg.fillRect(0,0,W,H);
+   if(CFG.hero)draw(bg,CFG.hero,540,900,lerp(260,520,E.i3(p))*(1+pulse(t,.2)*.15),p*p*8,1,.25+.75*p)},       // tension until the drop
+ flip:(u,t,k)=>{back(0,t);draw(bg,CFG.hero||pick(0),540,900,lerp(820,600,seg(u,0,.2)),u*10,Math.cos(u*22))},        // hero spins/flips on the drop
+ burst:(u,t,k)=>{back(0,t);draw(bg,CFG.hero||pick(0),540,880,520*E.oB(seg(u,0,.18)));for(let i=0;i<30;i++){const a=hash(i)*6.283,sp=1100+hash(i+5)*1500,v=u+.05;particle(bg,540+Math.cos(a)*sp*v,860+Math.sin(a)*sp*v+1800*v*v,30+hash(i+2)*36,hash(i)*3+v*8)}},
+ orbit:(u,t,k)=>{back(k,t);for(let i=0;i<12;i++){const a=hash(i)*6.283+t*(1.4+hash(i+3)),r=420+hash(i+5)*380;draw(bg,pick(i),540+Math.cos(a)*r,900+Math.sin(a)*r*.8,150+hash(i+8)*120,t*2+i)}},
+ rain:(u,t,k)=>{back(k,t);for(let i=0;i<34;i++){const x=hash(i+1)*W,y=-250+((u*(1300+hash(i+2)*900)+hash(i+4)*2300)%2400);particle(bg,x,y,40+hash(i+6)*44,hash(i)*2+u*6)}},
+ spin:(u,t,k)=>{back(k,t);draw(bg,CFG.hero||pick(k),540,900,lerp(1200,760,E.o3(seg(u,0,.3))),t*3.2)},
+ slam:(u,t,k)=>{back(k,t);const p=E.oB(seg(u,0,.18),2.4);draw(bg,CFG.hero||pick(k),540,900,(1.6-.6*p)*860)},
+ pop:(u,t,k)=>{back(k,t);draw(bg,pick(k),540,980,640*E.oB(seg(u,0,.2),2),Math.sin(u*30)*.05)},
+ photo:(u,t,k)=>{const r=ras(pick(k));bg.fillStyle='#000';bg.fillRect(0,0,W,H);if(!r)return;const s=Math.max(W/r.width,H/r.height)*(1.15+u*.25);bg.drawImage(r,540-r.width*s/2,960-r.height*s/2,r.width*s,r.height*s)},   // full-bleed, punch zoom
+ split:(u,t,k)=>{back(k,t);[0,1].forEach(j=>{const o=E.o5(seg(u,j*.08,.2+j*.08));draw(bg,pick(k+j),j?760:320,lerp(j?2200:-300,900,o),460,(j?1:-1)*.12)})},
+ strobe:(u,t,k)=>{const i=Math.floor(Math.round(u*60+1e-6)/4);bg.fillStyle=CFG.pal[i%CFG.pal.length];bg.fillRect(0,0,W,H);draw(bg,i%3===2&&CFG.hero?CFG.hero:pick(i),540,900,i%3===2?860:640,Math.sin(i)*.4)},   // content changes every 4 frames
+};
+let SHOTS=null;
+function setWords(top,bot,u){const two=top&&bot,Y=1000;const fsT=top.length>9?150:(top.length>6?200:(top.length>3?260:330)),fsB=bot.length>10?160:(bot.length>7?210:300);
+  const wt=$('wt'),wb=$('wb');wt.textContent=top;wb.textContent=bot;wt.style.fontSize=fsT+'px';wb.style.fontSize=fsB+'px';wb.style.color=CFG.accent;
+  wt.style.top=(two?Y-fsT*.9:Y-fsT*.44)+'px';wb.style.top=(two?Y+10:Y-fsB*.44)+'px';const p=E.oB(seg(u,0,.12),2.6);(bot?wb:wt).style.transform=`scale(${1.45-.45*p})`;(bot?wt:wb).style.transform='scale(1)'}
+
+// ---------------- seek
+function seek(t){
+  bg.setTransform(1,0,0,1,0,0);bg.globalAlpha=1;bg.globalCompositeOperation='source-over';fx.clearRect(0,0,W,H);$('words').style.display='none';
+  const st=$('stage'),P=pulse(t);st.style.transform='none';st.style.filter='none';let flash=0;
+  const k=SHOTS.reduce((a,s,i)=>s[0]<=t?i:a,0),[t0,v,a,b]=SHOTS[k],u=t-t0;
+  VIS[v](u,t,k);
+  if(t>=DROP&&t<END){
+    const wp=E.o5(seg(u,0,.09)),dir=k%2?1:-1;if(wp<1&&v!=='strobe')bg.putImageData(bg.getImageData(0,0,W,H),(1-wp)*dir*260,0);      // whip-in
+    const sh=P*16;st.style.transform=`translate(${(hash(Math.floor(t*40))-.5)*sh}px,${(hash(Math.floor(t*40)+7)-.5)*sh}px) scale(${1+P*.06}) rotate(${(hash(Math.floor(t*40)+3)-.5)*P*1.2}deg)`;   // pulse + shake
+    st.style.filter=wp<1&&v!=='strobe'?`blur(${(1-wp)*10}px)`:'none';flash=Math.pow(P,8)*.6+(u<.05&&['burst','slam','flip'].includes(v)?.8:0);
+  } else if(t<DROP){flash=t>DROP-.06?1:0;st.style.transform=`scale(${1+pulse(t,.2)*.03})`}
+  if(a||b){$('words').style.display='block';setWords(a||'',b||'',u)}
+  if(t>END-.4&&!SHOTS.some(s=>s[0]>=END-.01)){fx.fillStyle=`rgba(0,0,0,${seg(t,END-.4,END)})`;fx.fillRect(0,0,W,H)}   // music over, nothing scheduled → black
+  const id=gr.createImageData(540,960),s0=Math.floor(t*60);for(let i=0;i<id.data.length;i+=4){const g=hash(i*.37+s0*13.1)*255;id.data[i]=id.data[i+1]=id.data[i+2]=g;id.data[i+3]=255}gr.putImageData(id,0,0);
+  $('flash').style.opacity=clamp(flash)}
+window.seek=seek;
+const wait=i=>new Promise(r=>i.complete?r():(i.onload=i.onerror=r));
+Promise.all([document.fonts.ready,...[CFG.hero,CFG.particle,...CFG.images].filter(Boolean).map(s=>wait(img(s)))]).then(()=>{
+  SHOTS=SHOTS_SRC.map(s=>[resolve(s[0]),s[1],s[2]||'',s[3]||'']).filter(s=>s[0]<DUR).sort((a,b)=>a[0]-b[0]);
+  seek(+new URLSearchParams(location.search).get('t')||0);window.ready=true});
+</script></body></html>
