@@ -1,10 +1,12 @@
 {
   "duration": 30.0,
   "voice": {"file": "narration.mp3", "start": 0.5},
+  "music": {"file": "music.mp3", "gain_db": -22},
   "sfx": [
-    {"file": "sfx_bell.mp3", "at": 1.33, "gain_db": -8},
-    {"file": "sfx_stamp.mp3", "at": 18.89, "gain_db": -2},
-    {"file": "sfx_bell.mp3", "at": 25.10, "gain_db": -5}
+    {"file": "sfx_bell.mp3", "at": 1.67, "gain_db": -6},
+    {"file": "sfx_scrape.mp3", "at": 7.07, "gain_db": -4},
+    {"file": "sfx_stamp.mp3", "at": 19.26, "gain_db": -2},
+    {"file": "sfx_bell.mp3", "at": 28.27, "gain_db": -2}
   ],
   "sfx_bus_db": -14
 }

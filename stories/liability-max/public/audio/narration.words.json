@@ -1,410 +1,342 @@
 [
 {
 "w": "This",
-"s": 0.0,
-"e": 0.42,
-"phrase_start": true
+"s": 0.16,
+"e": 0.32
 },
 {
 "w": "is",
-"s": 0.42,
-"e": 0.7,
-"phrase_start": false
+"s": 0.4,
+"e": 0.48
 },
 {
 "w": "Max.",
-"s": 0.7,
-"e": 1.05,
-"phrase_start": false
+"s": 0.56,
+"e": 1.2
 },
 {
 "w": "He",
-"s": 1.39,
-"e": 1.58,
-"phrase_start": true
+"s": 1.36,
+"e": 1.44
 },
 {
 "w": "rides",
-"s": 1.58,
-"e": 1.91,
-"phrase_start": false
+"s": 1.52,
+"e": 1.76
 },
 {
 "w": "his",
-"s": 1.91,
-"e": 2.15,
-"phrase_start": false
+"s": 1.84,
+"e": 2.0
 },
 {
 "w": "bike",
-"s": 2.15,
-"e": 2.43,
-"phrase_start": false
+"s": 2.12,
+"e": 2.24
 },
 {
 "w": "to",
-"s": 2.43,
-"e": 2.61,
-"phrase_start": false
+"s": 2.32,
+"e": 2.4
 },
 {
 "w": "work",
-"s": 2.61,
-"e": 2.9,
-"phrase_start": false
+"s": 2.48,
+"e": 2.8
 },
 {
 "w": "every",
-"s": 2.9,
-"e": 3.22,
-"phrase_start": false
+"s": 2.88,
+"e": 3.2
 },
 {
 "w": "day.",
-"s": 3.22,
-"e": 3.46,
-"phrase_start": false
+"s": 3.28,
+"e": 3.8
 },
 {
 "w": "One",
-"s": 4.17,
-"e": 4.49,
-"phrase_start": true
+"s": 4.24,
+"e": 4.4
 },
 {
 "w": "wet",
-"s": 4.49,
-"e": 4.81,
-"phrase_start": false
+"s": 4.56,
+"e": 4.72
 },
 {
 "w": "morning...",
-"s": 4.81,
-"e": 5.39,
-"phrase_start": false
+"s": 4.88,
+"e": 5.68
 },
 {
 "w": "his",
-"s": 5.66,
-"e": 5.95,
-"phrase_start": true
+"s": 5.76,
+"e": 5.84
 },
 {
 "w": "handlebar",
-"s": 5.95,
-"e": 6.58,
-"phrase_start": false
+"s": 6.0,
+"e": 6.48
 },
 {
 "w": "scrapes",
-"s": 6.58,
-"e": 7.11,
-"phrase_start": false
+"s": 6.56,
+"e": 6.88
 },
 {
 "w": "a",
-"s": 7.11,
-"e": 7.28,
-"phrase_start": false
+"s": 7.12,
+"e": 7.16
 },
 {
 "w": "shiny",
-"s": 7.28,
-"e": 7.68,
-"phrase_start": false
+"s": 7.2,
+"e": 7.52
 },
 {
 "w": "new",
-"s": 7.68,
-"e": 7.97,
-"phrase_start": false
+"s": 7.6,
+"e": 7.76
 },
 {
 "w": "car.",
-"s": 7.97,
-"e": 8.26,
-"phrase_start": false
+"s": 7.84,
+"e": 8.48
 },
 {
 "w": "In",
-"s": 8.75,
-"e": 8.97,
-"phrase_start": true
+"s": 8.86,
+"e": 8.88
 },
 {
 "w": "Germany,",
-"s": 8.97,
-"e": 9.46,
-"phrase_start": false
+"s": 8.96,
+"e": 9.72
 },
 {
 "w": "you",
-"s": 9.71,
-"e": 9.97,
-"phrase_start": true
+"s": 9.76,
+"e": 9.92
 },
 {
 "w": "pay",
-"s": 9.97,
-"e": 10.22,
-"phrase_start": false
+"s": 10.0,
+"e": 10.24
 },
 {
 "w": "for",
-"s": 10.22,
-"e": 10.47,
-"phrase_start": false
+"s": 10.32,
+"e": 10.48
 },
 {
 "w": "damage",
-"s": 10.47,
-"e": 10.87,
-"phrase_start": false
+"s": 10.64,
+"e": 10.8
 },
 {
 "w": "you",
-"s": 10.87,
-"e": 11.12,
-"phrase_start": false
+"s": 10.88,
+"e": 10.96
 },
 {
 "w": "cause.",
-"s": 11.12,
-"e": 11.48,
-"phrase_start": false
+"s": 11.04,
+"e": 11.8
 },
 {
 "w": "With",
 "s": 11.84,
-"e": 12.15,
-"phrase_start": true
+"e": 12.08
 },
 {
 "w": "no",
-"s": 12.15,
-"e": 12.36,
-"phrase_start": false
+"s": 12.16,
+"e": 12.4
 },
 {
 "w": "upper",
-"s": 12.36,
-"e": 12.72,
-"phrase_start": false
+"s": 12.48,
+"e": 12.72
 },
 {
 "w": "limit.",
-"s": 12.72,
-"e": 13.08,
-"phrase_start": false
+"s": 12.8,
+"e": 13.36
 },
 {
 "w": "Max",
-"s": 13.61,
-"e": 13.86,
-"phrase_start": true
+"s": 13.68,
+"e": 13.92
 },
 {
 "w": "doesn't",
-"s": 13.86,
-"e": 14.25,
-"phrase_start": false
+"s": 14.0,
+"e": 14.24
 },
 {
 "w": "ride",
-"s": 14.25,
-"e": 14.55,
-"phrase_start": false
+"s": 14.32,
+"e": 14.48
 },
 {
 "w": "away.",
-"s": 14.55,
-"e": 14.84,
-"phrase_start": false
+"s": 14.56,
+"e": 15.25
 },
 {
 "w": "He",
-"s": 15.23,
-"e": 15.37,
-"phrase_start": true
+"s": 15.31,
+"e": 15.36
 },
 {
 "w": "leaves",
-"s": 15.37,
-"e": 15.66,
-"phrase_start": false
+"s": 15.4,
+"e": 15.6
 },
 {
 "w": "a",
-"s": 15.66,
-"e": 15.76,
-"phrase_start": false
+"s": 15.68,
+"e": 15.76
 },
 {
 "w": "note",
-"s": 15.76,
-"e": 15.98,
-"phrase_start": false
+"s": 15.88,
+"e": 16.0
 },
 {
 "w": "with",
-"s": 15.98,
-"e": 16.19,
-"phrase_start": false
+"s": 16.08,
+"e": 16.16
 },
 {
 "w": "his",
-"s": 16.19,
-"e": 16.37,
-"phrase_start": false
+"s": 16.24,
+"e": 16.32
 },
 {
 "w": "number.",
-"s": 16.37,
-"e": 16.65,
-"phrase_start": false
+"s": 16.64,
+"e": 17.0
 },
 {
 "w": "His",
-"s": 17.11,
-"e": 17.37,
-"phrase_start": true
+"s": 17.26,
+"e": 17.28
 },
 {
 "w": "liability",
-"s": 17.37,
-"e": 17.93,
-"phrase_start": false
+"s": 17.36,
+"e": 18.0
 },
 {
 "w": "insurance",
-"s": 17.93,
-"e": 18.5,
-"phrase_start": false
+"s": 18.08,
+"e": 18.56
 },
 {
 "w": "pays",
-"s": 18.5,
-"e": 18.81,
-"phrase_start": false
+"s": 18.64,
+"e": 18.88
 },
 {
 "w": "the",
-"s": 18.81,
-"e": 19.07,
-"phrase_start": false
+"s": 18.92,
+"e": 18.96
 },
 {
 "w": "repair.",
-"s": 19.07,
-"e": 19.48,
-"phrase_start": false
+"s": 19.4,
+"e": 19.88
 },
 {
 "w": "Max",
-"s": 19.86,
-"e": 20.14,
-"phrase_start": true
+"s": 19.92,
+"e": 20.24
 },
 {
 "w": "keeps",
-"s": 20.14,
-"e": 20.55,
-"phrase_start": false
+"s": 20.32,
+"e": 20.56
 },
 {
 "w": "his",
-"s": 20.55,
-"e": 20.83,
-"phrase_start": false
+"s": 20.64,
+"e": 20.72
 },
 {
 "w": "savings.",
-"s": 20.83,
-"e": 21.35,
-"phrase_start": false
+"s": 20.8,
+"e": 21.77
 },
 {
 "w": "One",
-"s": 21.77,
-"e": 22.01,
-"phrase_start": true
+"s": 21.84,
+"e": 22.08
 },
 {
 "w": "small",
-"s": 22.01,
-"e": 22.34,
-"phrase_start": false
+"s": 22.16,
+"e": 22.4
 },
 {
 "w": "mistake",
-"s": 22.34,
-"e": 22.78,
-"phrase_start": false
+"s": 22.48,
+"e": 22.96
 },
 {
 "w": "should",
-"s": 22.78,
-"e": 23.17,
-"phrase_start": false
+"s": 23.04,
+"e": 23.28
 },
 {
 "w": "not",
-"s": 23.17,
-"e": 23.41,
-"phrase_start": false
+"s": 23.36,
+"e": 23.6
 },
 {
 "w": "cost",
-"s": 23.41,
-"e": 23.7,
-"phrase_start": false
+"s": 23.68,
+"e": 23.92
 },
 {
 "w": "you",
-"s": 23.7,
-"e": 23.94,
-"phrase_start": false
+"s": 24.0,
+"e": 24.08
 },
 {
 "w": "everything.",
-"s": 23.94,
-"e": 24.52,
-"phrase_start": false
+"s": 24.16,
+"e": 25.06
 },
 {
 "w": "Talk",
-"s": 25.06,
-"e": 25.46,
-"phrase_start": true
+"s": 25.26,
+"e": 25.28
 },
 {
 "w": "to",
-"s": 25.46,
-"e": 25.72,
-"phrase_start": false
+"s": 25.36,
+"e": 25.44
 },
 {
 "w": "Robin",
-"s": 25.72,
-"e": 26.18,
-"phrase_start": false
+"s": 25.6,
+"e": 25.76
 },
 {
 "w": "Emig,",
-"s": 26.18,
-"e": 26.58,
-"phrase_start": false
+"s": 25.84,
+"e": 26.36
 },
 {
 "w": "Allianz,",
-"s": 26.58,
-"e": 27.17,
-"phrase_start": false
+"s": 26.4,
+"e": 27.17
 },
 {
 "w": "today.",
-"s": 27.17,
-"e": 27.64,
-"phrase_start": false
+"s": 27.31,
+"e": 27.68
 }
 ]

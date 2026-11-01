@@ -625,7 +625,7 @@ const SceneCard: React.FC<{ f: number }> = ({ f }) => {
       </g>
       {/* the red bell, one last time */}
       <g transform={`translate(540 ${1520 + 10 * Math.sin(t * 0.15)}) scale(2.4)`} opacity={line(40)}>
-        <Bell f={f} ringAt={[CUES.sceneCard + 44]} />
+        <Bell f={f} ringAt={[CUES.cardBell]} />
       </g>
     </g>
   );
