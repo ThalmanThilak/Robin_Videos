@@ -1,0 +1,11 @@
+{
+  "duration": 30.0,
+  "voice": {"file": "narration.mp3", "start": 0.5},
+  "music": {"file": "music.mp3", "gain_db": -22},
+  "sfx": [
+    {"file": "sfx_coin.mp3", "at": 9.81, "gain_db": -4},
+    {"file": "sfx_shower.mp3", "at": 14.73, "gain_db": -10},
+    {"file": "sfx_chime.mp3", "at": 25.4, "gain_db": -4}
+  ],
+  "sfx_bus_db": -14
+}
