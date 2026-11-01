@@ -1,0 +1,410 @@
+[
+{
+"w": "This",
+"s": 0.0,
+"e": 0.42,
+"phrase_start": true
+},
+{
+"w": "is",
+"s": 0.42,
+"e": 0.7,
+"phrase_start": false
+},
+{
+"w": "Max.",
+"s": 0.7,
+"e": 1.05,
+"phrase_start": false
+},
+{
+"w": "He",
+"s": 1.39,
+"e": 1.58,
+"phrase_start": true
+},
+{
+"w": "rides",
+"s": 1.58,
+"e": 1.91,
+"phrase_start": false
+},
+{
+"w": "his",
+"s": 1.91,
+"e": 2.15,
+"phrase_start": false
+},
+{
+"w": "bike",
+"s": 2.15,
+"e": 2.43,
+"phrase_start": false
+},
+{
+"w": "to",
+"s": 2.43,
+"e": 2.61,
+"phrase_start": false
+},
+{
+"w": "work",
+"s": 2.61,
+"e": 2.9,
+"phrase_start": false
+},
+{
+"w": "every",
+"s": 2.9,
+"e": 3.22,
+"phrase_start": false
+},
+{
+"w": "day.",
+"s": 3.22,
+"e": 3.46,
+"phrase_start": false
+},
+{
+"w": "One",
+"s": 4.17,
+"e": 4.49,
+"phrase_start": true
+},
+{
+"w": "wet",
+"s": 4.49,
+"e": 4.81,
+"phrase_start": false
+},
+{
+"w": "morning...",
+"s": 4.81,
+"e": 5.39,
+"phrase_start": false
+},
+{
+"w": "his",
+"s": 5.66,
+"e": 5.95,
+"phrase_start": true
+},
+{
+"w": "handlebar",
+"s": 5.95,
+"e": 6.58,
+"phrase_start": false
+},
+{
+"w": "scrapes",
+"s": 6.58,
+"e": 7.11,
+"phrase_start": false
+},
+{
+"w": "a",
+"s": 7.11,
+"e": 7.28,
+"phrase_start": false
+},
+{
+"w": "shiny",
+"s": 7.28,
+"e": 7.68,
+"phrase_start": false
+},
+{
+"w": "new",
+"s": 7.68,
+"e": 7.97,
+"phrase_start": false
+},
+{
+"w": "car.",
+"s": 7.97,
+"e": 8.26,
+"phrase_start": false
+},
+{
+"w": "In",
+"s": 8.75,
+"e": 8.97,
+"phrase_start": true
+},
+{
+"w": "Germany,",
+"s": 8.97,
+"e": 9.46,
+"phrase_start": false
+},
+{
+"w": "you",
+"s": 9.71,
+"e": 9.97,
+"phrase_start": true
+},
+{
+"w": "pay",
+"s": 9.97,
+"e": 10.22,
+"phrase_start": false
+},
+{
+"w": "for",
+"s": 10.22,
+"e": 10.47,
+"phrase_start": false
+},
+{
+"w": "damage",
+"s": 10.47,
+"e": 10.87,
+"phrase_start": false
+},
+{
+"w": "you",
+"s": 10.87,
+"e": 11.12,
+"phrase_start": false
+},
+{
+"w": "cause.",
+"s": 11.12,
+"e": 11.48,
+"phrase_start": false
+},
+{
+"w": "With",
+"s": 11.84,
+"e": 12.15,
+"phrase_start": true
+},
+{
+"w": "no",
+"s": 12.15,
+"e": 12.36,
+"phrase_start": false
+},
+{
+"w": "upper",
+"s": 12.36,
+"e": 12.72,
+"phrase_start": false
+},
+{
+"w": "limit.",
+"s": 12.72,
+"e": 13.08,
+"phrase_start": false
+},
+{
+"w": "Max",
+"s": 13.61,
+"e": 13.86,
+"phrase_start": true
+},
+{
+"w": "doesn't",
+"s": 13.86,
+"e": 14.25,
+"phrase_start": false
+},
+{
+"w": "ride",
+"s": 14.25,
+"e": 14.55,
+"phrase_start": false
+},
+{
+"w": "away.",
+"s": 14.55,
+"e": 14.84,
+"phrase_start": false
+},
+{
+"w": "He",
+"s": 15.23,
+"e": 15.37,
+"phrase_start": true
+},
+{
+"w": "leaves",
+"s": 15.37,
+"e": 15.66,
+"phrase_start": false
+},
+{
+"w": "a",
+"s": 15.66,
+"e": 15.76,
+"phrase_start": false
+},
+{
+"w": "note",
+"s": 15.76,
+"e": 15.98,
+"phrase_start": false
+},
+{
+"w": "with",
+"s": 15.98,
+"e": 16.19,
+"phrase_start": false
+},
+{
+"w": "his",
+"s": 16.19,
+"e": 16.37,
+"phrase_start": false
+},
+{
+"w": "number.",
+"s": 16.37,
+"e": 16.65,
+"phrase_start": false
+},
+{
+"w": "His",
+"s": 17.11,
+"e": 17.37,
+"phrase_start": true
+},
+{
+"w": "liability",
+"s": 17.37,
+"e": 17.93,
+"phrase_start": false
+},
+{
+"w": "insurance",
+"s": 17.93,
+"e": 18.5,
+"phrase_start": false
+},
+{
+"w": "pays",
+"s": 18.5,
+"e": 18.81,
+"phrase_start": false
+},
+{
+"w": "the",
+"s": 18.81,
+"e": 19.07,
+"phrase_start": false
+},
+{
+"w": "repair.",
+"s": 19.07,
+"e": 19.48,
+"phrase_start": false
+},
+{
+"w": "Max",
+"s": 19.86,
+"e": 20.14,
+"phrase_start": true
+},
+{
+"w": "keeps",
+"s": 20.14,
+"e": 20.55,
+"phrase_start": false
+},
+{
+"w": "his",
+"s": 20.55,
+"e": 20.83,
+"phrase_start": false
+},
+{
+"w": "savings.",
+"s": 20.83,
+"e": 21.35,
+"phrase_start": false
+},
+{
+"w": "One",
+"s": 21.77,
+"e": 22.01,
+"phrase_start": true
+},
+{
+"w": "small",
+"s": 22.01,
+"e": 22.34,
+"phrase_start": false
+},
+{
+"w": "mistake",
+"s": 22.34,
+"e": 22.78,
+"phrase_start": false
+},
+{
+"w": "should",
+"s": 22.78,
+"e": 23.17,
+"phrase_start": false
+},
+{
+"w": "not",
+"s": 23.17,
+"e": 23.41,
+"phrase_start": false
+},
+{
+"w": "cost",
+"s": 23.41,
+"e": 23.7,
+"phrase_start": false
+},
+{
+"w": "you",
+"s": 23.7,
+"e": 23.94,
+"phrase_start": false
+},
+{
+"w": "everything.",
+"s": 23.94,
+"e": 24.52,
+"phrase_start": false
+},
+{
+"w": "Talk",
+"s": 25.06,
+"e": 25.46,
+"phrase_start": true
+},
+{
+"w": "to",
+"s": 25.46,
+"e": 25.72,
+"phrase_start": false
+},
+{
+"w": "Robin",
+"s": 25.72,
+"e": 26.18,
+"phrase_start": false
+},
+{
+"w": "Emig,",
+"s": 26.18,
+"e": 26.58,
+"phrase_start": false
+},
+{
+"w": "Allianz,",
+"s": 26.58,
+"e": 27.17,
+"phrase_start": false
+},
+{
+"w": "today.",
+"s": 27.17,
+"e": 27.64,
+"phrase_start": false
+}
+]

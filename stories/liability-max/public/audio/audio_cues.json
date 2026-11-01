@@ -1,0 +1,10 @@
+{
+  "duration": 30.0,
+  "voice": {"file": "narration.mp3", "start": 0.5},
+  "sfx": [
+    {"file": "sfx_bell.mp3", "at": 1.33, "gain_db": -8},
+    {"file": "sfx_stamp.mp3", "at": 18.89, "gain_db": -2},
+    {"file": "sfx_bell.mp3", "at": 25.10, "gain_db": -5}
+  ],
+  "sfx_bus_db": -14
+}
