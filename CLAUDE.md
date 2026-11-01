@@ -31,7 +31,7 @@ Rules:
 - Remotion may need a company licence for commercial use. Check remotion.dev/license.
 
 ## Lessons from the first two videos (Nov 2026)
-- Finished videos: stories/liability-max (story-animator, 30 s, 9:16) and stories/hausrat-water (motion-design, 30 s, 9:16). Both for Robin Emig, Allianz, +49 160 97626099. English, warm male voice "Russell - The Friendly Narrator".
+- Finished videos: stories/liability-max (story-animator, 30 s, 9:16), stories/hausrat-water (motion-design, 30 s, 9:16) and stories/rechtsschutz-deposit (story-animator, 30 s, 9:16, Max again). Both for Robin Emig, Allianz, +49 160 97626099. English, warm male voice "Russell - The Friendly Narrator".
 - Real ElevenLabs prices seen (free plan): 30 s voice take 440-500, 30 s music 900, each sound effect 50, Scribe transcription 0.
 - ElevenLabs free generations are often busy. Never retry in the same turn; tell the user and retry on the next message.
 - Music settings come back as "Instrumental: False" even when the prompt says no vocals. Ask the user to listen for singing.
@@ -39,3 +39,5 @@ Rules:
 - motion-design: Python Playwright is not installed. Use stories/hausrat-water/render.js (Node Playwright) instead.
 - Mix with .claude/skills/story-animator/scripts/mix.py. Target: background 12-18 dB under the voice, about -14 LUFS.
 - The user is on the ElevenLabs free plan: remind them it has no commercial licence before Robin posts.
+- A 68-word script came back at about 30 s. To fit 30 s, shorten the pauses with stories/rechtsschutz-deposit/tools/tighten.py (it also moves the Scribe word times). Do not speed up the voice.
+- Scribe can transcribe a take straight from its generation id (creative_add_flow_asset_node), so no upload is needed.

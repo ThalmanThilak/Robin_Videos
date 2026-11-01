@@ -42,7 +42,7 @@ export const CUES = {
   hand: 142, // "hands back": Max walks to the door
   keys: 168, // "keys": the key goes to the landlord
   sceneLetter: 186, // "But the landlord"
-  stamp: 220, // "keeps"
+  stamp: 226, // just after "keeps" (the stamp sound lands here)
   cent: 264, // "Every cent": coins fly out of the piggy bank
   sceneCourt: 304, // "Max wants to fight"
   fist: 330, // "fight"

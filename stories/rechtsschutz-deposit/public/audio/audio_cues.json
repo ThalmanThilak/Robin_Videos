@@ -1,1 +1,10 @@
-{"duration": 30.0, "voice": {"file": "narration.mp3", "start": 0.5}}
+{
+  "duration": 30.0,
+  "voice": {"file": "narration.mp3", "start": 0.5},
+  "music": {"file": "music.mp3", "gain_db": -22},
+  "sfx": [
+    {"file": "sfx_stamp.mp3", "at": 6.56, "gain_db": -2},
+    {"file": "sfx_coins.mp3", "at": 22.55, "gain_db": -4}
+  ],
+  "sfx_bus_db": -14
+}
