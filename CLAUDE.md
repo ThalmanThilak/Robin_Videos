@@ -39,3 +39,12 @@ Rules:
 - motion-design: Python Playwright is not installed. Use stories/hausrat-water/render.js (Node Playwright) instead.
 - Mix with .claude/skills/story-animator/scripts/mix.py. Target: background 12-18 dB under the voice, about -14 LUFS.
 - The user is on the ElevenLabs free plan: remind them it has no commercial licence before Robin posts.
+
+## Lessons from the third video (Nov 2026)
+- Finished: stories/term-life (story-animator, 30 s, 9:16), Risikolebensversicherung, "Tom's key". Same voice and end card as liability-max.
+- Prices seen this time: eleven_v4 voice 398 per take (2 takes = 796), Scribe 313 for a 22 s file (not free any more), music 900, sound effect 50. Run estimate_only first and tell the user.
+- Scribe one take only, and only after you pick it by ear or by length. Transcribing both takes doubles the cost.
+- Long German words (Risikolebensversicherung): let the English voice say "term life insurance" and show the German word on screen.
+- A 61-word script came out at 22.4 s. To fill 30 s, add pauses at story turns with ffmpeg (atrim + apad) and shift the word times; no new voice take needed.
+- A sound effect can come back far too long (the stamp was 30 s). Check the length and cut it to the hit.
+- Split screen in 9:16: stack the two halves top and bottom, and put the subtitles on the seam (Subtitles centerY).

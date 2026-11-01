@@ -1,0 +1,13 @@
+{
+  "duration": 30.0,
+  "voice": {"file": "narration.mp3", "start": 0.5},
+  "music": {"file": "music.mp3", "gain_db": -22},
+  "sfx": [
+    {"file": "sfx_keys.mp3", "at": 3.07, "gain_db": -6},
+    {"file": "sfx_dim.mp3", "at": 6.55, "gain_db": -6},
+    {"file": "sfx_stamp.mp3", "at": 19.23, "gain_db": 4},
+    {"file": "sfx_keys.mp3", "at": 21.33, "gain_db": -6},
+    {"file": "sfx_keys.mp3", "at": 26.0, "gain_db": -2}
+  ],
+  "sfx_bus_db": -14
+}
