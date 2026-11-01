@@ -1,0 +1,10 @@
+{
+  "duration": 30.0,
+  "voice": {"file": "narration.mp3", "start": 0.5},
+  "music": {"file": "music.mp3", "gain_db": -22},
+  "sfx": [
+    {"file": "sfx_drip.mp3", "at": 6.09, "gain_db": -2},
+    {"file": "sfx_burst.mp3", "at": 7.45, "gain_db": -6}
+  ],
+  "sfx_bus_db": -12
+}

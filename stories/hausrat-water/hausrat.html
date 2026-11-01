@@ -19,13 +19,15 @@
 
 // ---------- timing (seconds). Filled from the narration word times. ----------
 const T = {
-  l1: 0.55, everything: 1.6,          // "Your home. Everything you own, in one place."
-  l2: 3.8, drop: 4.6, bursts: 6.1,    // "Then one night... a water pipe bursts."
-  sofa: 7.2, laptop: 8.1, rug: 9.0, ruined: 9.8,
-  insure: 11.1,                        // "Your household contents insurance replaces them."
-  old: 14.5, newv: 16.4,               // "Not at the old price. At what new ones cost today."
-  l6: 18.5, fire: 19.5, storm: 20.0, hail: 20.5, burglary: 21.0,
-  l7: 22.0, card: 23.4,                // "Protect what's inside. Talk to Robin Emig, Allianz."
+  // film time = voice time + 0.5 s. Phrase starts measured from the narration pauses;
+  // single words inside "It also covers fire, storm, hail and burglary." are estimated from letter counts.
+  l1: 0.5, everything: 1.84,           // "Your home." / "Everything you own, in one place."
+  l2: 4.83, drop: 5.0, bursts: 7.45,   // "Then one night..." / "a water pipe bursts." (flood just after the word)
+  sofa: 7.97, laptop: 9.06, rug: 10.11, ruined: 11.23,
+  insure: 12.41,                        // "Your household contents insurance replaces them."
+  old: 15.46, newv: 17.1,               // "Not at the old price." / "At what new ones cost today."
+  l6: 18.89, fire: 19.95, storm: 20.38, hail: 20.87, burglary: 21.5,
+  l7: 22.57, card: 23.5,                // "Protect what's inside." / "Talk to Robin Emig, Allianz."
   end: 30.0,
 };
 
@@ -192,8 +194,8 @@ function frame(t) {
   // "Example" chip during the story part
   const ex = spring(t, T.l2 + 0.3, 0.5) * (1 - ramp(t, T.insure - 0.6, T.insure - 0.3));
   if (ex > 0.01) {
-    s += `<g opacity="${ex}" transform="translate(960 640)"><rect x="-120" y="-30" width="140" height="56" rx="28" fill="none" stroke="${MUTED}" stroke-width="3"/>
-      <text x="-50" y="10" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="28" fill="${MUTED}">Example</text></g>`;
+    s += `<g opacity="${ex}" transform="translate(960 640)"><rect x="-150" y="-38" width="200" height="76" rx="38" fill="none" stroke="${MUTED}" stroke-width="4"/>
+      <text x="-50" y="10" text-anchor="middle" font-family="${FONT}" font-weight="800" font-size="40" fill="${MUTED}">Example</text></g>`;
   }
 
   // the drop: forms at the joint, falls, splashes
@@ -221,7 +223,7 @@ function frame(t) {
       let d = `M -100,${level}`;
       for (let x = -100; x <= W + 100; x += 30) d += ` L ${x},${(level + Math.sin(x / 70 + t * 3.2) * amp).toFixed(1)}`;
       d += ` L ${W + 100},${H + 300} L -100,${H + 300} Z`;
-      s += `<path d="${d}" fill="${ACC}" opacity="${0.82 * (1 - ramp(t, T.insure - 0.35, T.insure))}"/>`;
+      s += `<path d="${d}" fill="${ACC}" opacity="${lerp(0.92, 0.82, ramp(t, T.bursts + 0.55, T.bursts + 1.4)) * (1 - ramp(t, T.insure - 0.35, T.insure))}"/>`;
     }
   }
 
@@ -252,19 +254,19 @@ function frame(t) {
   // ===== kinetic type (outside the camera so it stays razor sharp) =====
   s += text(t, "Your home.", 540, 470, 104, { t0: T.l1 - 0.05, t1: T.l2 - 0.4 });
   s += text(t, "Everything you own.", 540, 580, 60, { w: 700, color: MUTED, t0: T.everything, t1: T.l2 - 0.4 });
-  s += text(t, "Then one night...", 540, 470, 96, { t0: T.l2, t1: T.bursts - 0.25 });
-  s += text(t, "the pipe bursts.", 540, 470, 104, { t0: T.bursts - 0.25, t1: T.sofa - 0.3, color: INK });
+  s += text(t, "Then one night...", 540, 470, 96, { t0: T.l2, t1: T.bursts - 1.0 });
+  s += text(t, "the pipe bursts.", 540, 470, 104, { t0: T.bursts - 0.75, t1: T.sofa - 0.3, color: INK });
   // over the water: names land on their words
   const wT1 = T.insure - 0.6;
-  s += text(t, "The sofa.", 540, 430, 92, { t0: T.sofa, t1: T.laptop - 0.15 });
-  s += text(t, "The laptop.", 540, 430, 92, { t0: T.laptop - 0.15, t1: T.rug - 0.15 });
-  s += text(t, "The rug.", 540, 430, 92, { t0: T.rug - 0.15, t1: T.ruined - 0.15 });
+  s += text(t, "The sofa.", 540, 430, 92, { t0: T.sofa, t1: T.laptop - 0.4 });
+  s += text(t, "The laptop.", 540, 430, 92, { t0: T.laptop - 0.15, t1: T.rug - 0.4 });
+  s += text(t, "The rug.", 540, 430, 92, { t0: T.rug - 0.15, t1: T.ruined - 0.4 });
   s += text(t, "Ruined.", 540, 430, 120, { t0: T.ruined - 0.15, t1: wT1, w: 900 });
   // insurance
-  s += text(t, "Household contents", 540, 1240, 84, { t0: T.insure + 0.5, t1: T.old - 0.4, w: 900 });
-  s += text(t, "insurance", 540, 1340, 84, { t0: T.insure + 0.62, t1: T.old - 0.4, w: 900 });
-  s += text(t, "Hausratversicherung", 540, 1450, 56, { t0: T.insure + 0.9, t1: T.old - 0.4, w: 800, color: ACC });
-  s += text(t, "Replaced at new value.", 540, 1565, 46, { t0: T.insure + 1.6, t1: T.old - 0.4, w: 700, color: MUTED });
+  s += text(t, "Household contents", 540, 1240, 84, { t0: T.insure + 0.5, t1: T.old - 0.85, w: 900 });
+  s += text(t, "insurance", 540, 1340, 84, { t0: T.insure + 0.62, t1: T.old - 0.85, w: 900 });
+  s += text(t, "Hausratversicherung", 540, 1450, 56, { t0: T.insure + 0.9, t1: T.old - 0.85, w: 800, color: ACC });
+  s += text(t, "Replaced at new value.", 540, 1565, 46, { t0: T.insure + 1.6, t1: T.old - 0.85, w: 700, color: MUTED });
 
   // ===== new value (old .. l6) =====
   if (t >= T.old - 0.2 && t < T.l6 + 0.6) {
@@ -291,11 +293,11 @@ function frame(t) {
     }
     s += `</g>`;
   }
-  s += text(t, "Not the old price.", 540, 720, 84, { t0: T.old, t1: T.newv - 0.2, w: 900 });
-  s += text(t, "What new ones cost today.", 540, 720, 72, { t0: T.newv - 0.2, t1: T.l6 - 0.2, w: 900 });
+  s += text(t, "Not the old price.", 540, 720, 84, { t0: T.old, t1: T.newv - 0.45, w: 900 });
+  s += text(t, "What new ones cost today.", 540, 720, 72, { t0: T.newv - 0.2, t1: T.l6 - 0.45, w: 900 });
 
   // ===== also covered (l6 .. l7) =====
-  s += text(t, "Also covered", 540, 720, 84, { t0: T.l6, t1: T.l7 - 0.2, w: 900 });
+  s += text(t, "Also covered", 540, 720, 84, { t0: T.l6, t1: T.l7 - 0.45, w: 900 });
   const cells = [["fire", "Fire", 330, 960], ["storm", "Storm", 750, 960], ["hail", "Hail", 330, 1400], ["burglary", "Burglary", 750, 1400]];
   for (const [k, label, x, y] of cells) {
     const p = spring(t, T[k] - 0.05, 0.5), q = 1 - io(ramp(t, T.l7 - 0.3, T.l7 + 0.1));
@@ -310,7 +312,7 @@ function frame(t) {
   s += text(t, "Protect what's inside.", 540, 720, 80, { t0: T.l7, t1: 1e9, w: 900 });
   const c = spring(t, T.card, 0.65);
   if (c > 0.01) {
-    const drift = 1 + 0.012 * ramp(t, T.card, T.end);
+    const drift = 1 + 0.035 * io(ramp(t, T.card, T.end));
     s += `<g transform="translate(540 ${lerp(1500, 1180, c)}) scale(${drift})" opacity="${clamp01(c * 1.4)}">
       <rect x="-450" y="-300" width="900" height="600" rx="48" fill="${WHITE}" stroke="#e3e6ec" stroke-width="3"/>
       <text x="0" y="-120" text-anchor="middle" font-family="${FONT}" font-weight="900" font-size="108" fill="${INK}">Robin Emig</text>
