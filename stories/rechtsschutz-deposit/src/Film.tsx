@@ -389,7 +389,7 @@ const SceneCourt: React.FC<{ f: number }> = ({ f }) => {
   const sh = eback(ramp(f, CUES.shield, CUES.shield + 18));
   const bright = ramp(f, CUES.shield - 10, CUES.shield + 30);
   const stamp = ramp(f, CUES.paid, CUES.paid + 8);
-  const shrink = 1 - eio(ramp(f, CUES.paid + 14, CUES.paid + 34));
+  const shrink = 1 - eio(ramp(f, CUES.paid + 6, CUES.paid + 22));
   const lawyerIn = eout(ramp(f, CUES.lawyer - 18, CUES.lawyer + 10));
   const lawyerX = lerp(1300, 660, lawyerIn);
   const safe = f >= CUES.shield;

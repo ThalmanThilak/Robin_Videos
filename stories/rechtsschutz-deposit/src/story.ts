@@ -19,44 +19,44 @@ export const STORY = {
   width: SHAPE.width,
   height: SHAPE.height,
   durationFrames: 900, // exactly 30 s
-  audio: null as string | null,
+  audio: "audio/mix.wav" as string | null,
 };
 
-// Subtitles: [startFrame, endFrame, text], as spoken. (ESTIMATED until the voice exists.)
+// Subtitles: [startFrame, endFrame, text], as spoken (narration.words.json, pauses shortened by tools/tighten.py).
 export const SUBS: [number, number, string][] = [
-  [21, 78, "Max moves out of his old flat."],
-  [84, 174, "He cleans every corner and hands back the keys."],
-  [189, 258, "But the landlord keeps his deposit."],
-  [262, 300, "Every cent."],
-  [309, 350, "Max wants to fight."],
-  [357, 458, "But a lawyer costs money, and court costs add up fast."],
-  [471, 552, "Luckily, Max has legal protection insurance."],
-  [555, 598, "It pays his lawyer."],
-  [606, 680, "In the end, Max gets his deposit back."],
-  [687, 768, "Your rights should not depend on your wallet."],
+  [22, 88, "Max moves out of his old flat."],
+  [91, 186, "He cleans every corner and hands back the keys."],
+  [190, 260, "But the landlord keeps his deposit."],
+  [262, 302, "Every cent."],
+  [309, 348, "Max wants to fight."],
+  [351, 470, "But a lawyer costs money, and court costs add up fast."],
+  [474, 569, "Luckily, Max has legal protection insurance."],
+  [572, 608, "It pays his lawyer."],
+  [611, 689, "In the end, Max gets his deposit back."],
+  [692, 772, "Your rights should not depend on your wallet."],
   // the last line is shown by the contact card itself
 ];
 
-// Story beats by frame. (ESTIMATED until the voice exists.)
+// Story beats by frame (from the word times).
 export const CUES = {
-  hand: 130, // "hands back": Max walks to the door
-  keys: 162, // "keys": the key goes to the landlord
-  sceneLetter: 182, // "But the landlord"
-  stamp: 226, // "keeps"
-  cent: 266, // "Every cent": coins fly out of the piggy bank
+  hand: 142, // "hands back": Max walks to the door
+  keys: 168, // "keys": the key goes to the landlord
+  sceneLetter: 186, // "But the landlord"
+  stamp: 220, // "keeps"
+  cent: 264, // "Every cent": coins fly out of the piggy bank
   sceneCourt: 304, // "Max wants to fight"
   fist: 330, // "fight"
-  costs: 357, // "But a lawyer costs": camera pulls back, bills pile up
-  court: 400, // "court": the courthouse rises
-  shield: 488, // "legal protection"
-  lawyer: 552, // "It pays his lawyer": the lawyer walks in
-  paid: 580, // "lawyer": PAID stamp
-  sceneBack: 602, // "In the end"
-  coinsBack: 636, // "deposit back"
-  sceneHome: 684, // "Your rights"
-  hang: 712, // Max hangs the red-tag key in his new flat
+  costs: 351, // "But a lawyer costs": camera pulls back, bills pile up
+  court: 410, // "court": the courthouse rises
+  shield: 512, // "legal protection"
+  lawyer: 572, // "It pays his lawyer": the lawyer walks in
+  paid: 590, // "lawyer": PAID stamp
+  sceneBack: 606, // "In the end"
+  coinsBack: 664, // "deposit back"
+  sceneHome: 688, // "Your rights"
+  hang: 728, // Max hangs the red-tag key in his new flat
   sceneCard: 772, // "Talk to Robin Emig"
-  cardKey: 858, // just after "today."
+  cardKey: 862, // just after "today."
   end: 900,
 };
 
