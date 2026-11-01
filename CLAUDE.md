@@ -32,7 +32,7 @@ Rules:
 
 ## Lessons from the first two videos (Nov 2026)
 - Finished videos: stories/liability-max (story-animator, 30 s, 9:16) and stories/hausrat-water (motion-design, 30 s, 9:16). Both for Robin Emig, Allianz, +49 160 97626099. English, warm male voice "Russell - The Friendly Narrator".
-- Real ElevenLabs prices seen (free plan): 30 s voice take 440-500, 30 s music 900, each sound effect 50, Scribe transcription 0.
+- Real ElevenLabs prices seen (free plan): 30 s voice take 440-500, 30 s music 900, each sound effect 50. Scribe transcription showed 0 once, but 403 for a 29 s take on 1 Nov 2026: transcribe only the take you plan to use.
 - ElevenLabs free generations are often busy. Never retry in the same turn; tell the user and retry on the next message.
 - Music settings come back as "Instrumental: False" even when the prompt says no vocals. Ask the user to listen for singing.
 - Cloud blocks Hugging Face (no faster-whisper models) and Chromium does not trust the proxy for Google Fonts. Use ElevenLabs Scribe for word times, and keep fonts in the project (see public/fonts, kit/fonts.ts).
