@@ -1,0 +1,29 @@
+{
+ "duration": 30.0,
+ "voice": {
+  "file": "narration.mp3",
+  "start": 0.5
+ },
+ "music": {
+  "file": "music.mp3",
+  "gain_db": -20
+ },
+ "sfx": [
+  {
+   "file": "sfx_kick1.wav",
+   "at": 6.14,
+   "gain_db": 0
+  },
+  {
+   "file": "sfx_glass.mp3",
+   "at": 8.53,
+   "gain_db": -6
+  },
+  {
+   "file": "sfx_chime.mp3",
+   "at": 19.3,
+   "gain_db": 2
+  }
+ ],
+ "sfx_bus_db": -18
+}

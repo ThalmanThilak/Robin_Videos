@@ -1,7 +1,6 @@
 // The film's settings and timeline. Every frame number lives here.
 // frame = OFFSET + round(seconds * FPS), seconds measured in public/audio/narration.mp3.
-// TIMING STATUS: estimated from the script (the audio could not be downloaded yet).
-// Re-time from ElevenLabs Scribe word times once narration.mp3 is in public/audio.
+// Word times come from ElevenLabs Scribe; the word frames are noted next to each cue.
 
 export const FPS = 30;
 export const OFFSET = 15; // the narration starts 0.5 s in
@@ -21,39 +20,42 @@ export const STORY = {
   width: SHAPE.width,
   height: SHAPE.height,
   durationFrames: 900, // exactly 30 s
-  audio: null as string | null, // set to "audio/mix.wav" after the mix
+  audio: "audio/mix.wav" as string | null,
 };
 
 // Subtitles: [startFrame, endFrame, text], as spoken.
 export const SUBS: [number, number, string][] = [
-  [15, 70, "Sunday afternoon."],
-  [72, 128, "Max plays football with his niece Mia."],
-  [138, 182, "One big kick..."],
-  [186, 268, "...straight through the living room window."],
-  [278, 316, "Who pays?"],
-  [324, 446, "His liability insurance? It only pays for damage to others."],
-  [454, 560, "Contents insurance? Usually not for broken windows."],
-  [568, 624, "Glass insurance does."],
-  [630, 728, "Max gets a new pane. Mia gets her ball back."],
+  [18, 62, "Sunday afternoon."],
+  [66, 142, "Max plays football with his niece Mia."],
+  [150, 192, "One big kick..."],
+  [198, 262, "...straight through the living room window."],
+  [266, 296, "Who pays?"],
+  [300, 350, "His liability insurance?"],
+  [352, 414, "It only pays for damage to others."],
+  [418, 462, "Contents insurance?"],
+  [466, 528, "Usually not for broken windows."],
+  [532, 586, "Glass insurance does."],
+  [589, 634, "Max gets a new pane."],
+  [636, 688, "Mia gets her ball back."],
   // the last line is shown by the contact card itself
 ];
 
 // Story beats by frame.
 export const CUES = {
-  kick: 162, // Mia's foot hits the ball, on "kick"
+  kick: 186, // Mia's foot hits the ball, right after "kick" (176-185)
   maxJump: 212, // Max jumps for the ball and misses
-  impact: 258, // ball hits the window, just after "window"
-  sceneWho: 274, // "Who pays?"
-  cardLiab: 326, // "His liability insurance"
-  crossLiab: 432, // after "others"
-  cardHome: 456, // "Contents insurance"
-  crossHome: 548, // after "broken windows"
-  shield: 572, // "Glass insurance does"
-  chime: 612, // just after "does"
-  sceneFix: 630, // "Max gets a new pane"
-  pane: 640, // the new pane slides in
-  ballBack: 686, // "Mia gets her ball back"
-  sceneCard: 734, // "Glass breaks fast. Talk to Robin Emig"
+  impact: 256, // ball hits the window, just after "window" (241-254)
+  sceneWho: 266, // "Who pays?" (270)
+  cardLiab: 302, // "His liability insurance" (304)
+  crossLiab: 408, // after "others" (ends 406)
+  cardHome: 418, // "Contents insurance" (421)
+  crossHome: 522, // after "broken windows" (ends 520)
+  shield: 534, // "Glass insurance does" (536)
+  chime: 579, // just after "does" (ends 577)
+  sceneFix: 590, // "Max gets a new pane" (593)
+  pane: 598, // the new pane slides in
+  ballBack: 660, // "Mia gets her ball back" ("ball" 663)
+  sceneCard: 690, // "Glass breaks fast. Talk to Robin Emig, Allianz." (693-805)
   end: 900,
 };
 
